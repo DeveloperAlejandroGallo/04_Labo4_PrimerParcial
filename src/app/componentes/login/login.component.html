@@ -1,0 +1,71 @@
+<div class="container center" style="width: 20rem;">
+    <body class="text-center" >
+        <div class="card text-center">
+            <img src="../../../assets/imagenes/Login.jpg" height=250px width=80px class="card-img-top" alt="login">
+            <div class="card-body">
+                <form class="form-signin">
+                    <!-- <img class="mb-4" src="../../../assets/imagenes/Login.jpg" alt="" width="72" height="72"> -->
+                    <h1 class="h3 mb-3 font-weight-normal">Ingrese por favor</h1>
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" id="inputEmail" class="form-control" [(ngModel)]="email"
+                        placeholder="Email" required="" autofocus="" name="inputEmail">
+                    <label for="inputPassword" class="sr-only">Clave</label>
+                    <input type="password" id="inputPassword" class="form-control" [(ngModel)]="pass"
+                        placeholder="Clave" required="" name="inputPassword">
+                    <!-- <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Recordar
+                        </label>
+                    </div> -->
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-2" (click)="btnLogin()" id="btnSubmit" >Ingreso</button>
+                    <button type="button" class="btn btn-lg btn-dark btn-block" (click)="registrarse()" id="btnRegistro" shape="round"
+                        size="medium">Registrarse</button>
+                    <hr>
+                    <button type="button" class="btn btn-info" (click)="loguearUsuario('admin')" shape="round"
+                        size="medium" id="ingresoPredef">Ingreso
+                        Admin</button>
+                    <p class="mt-2 mb-3 text-muted">© AJG - 2020</p>
+                </form>
+            </div>
+        </div>
+    </body>
+</div>
+<!-- 
+<div class="card">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="../../../assets/imagenes/login.png" class="card-img" alt="login">
+        </div>
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="card-header text-white bg-info">Login</div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">email</span>
+                        </div>
+                        <input type="email" class="form-control" [(ngModel)]="email" placeholder="Ingrese su email"
+                            aria-label="Usuario" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Clave</span>
+                        </div>
+                        <input type="password" class="form-control" [(ngModel)]="pass" placeholder="Ingrese su clave" aria-label="Clave" aria-describedby="basic-addon1" (keydown.enter)="save($event)">
+                    </div>
+                    <button type="button" class="btn btn-info" (click)="btnLogin()" shape="round" size="medium">Ingresar</button>
+                    <button type="button" class="btn btn-info" (click)="registrarse()" shape="round" size="medium">Registrarse</button>
+                    <hr>
+                    <div>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('admin')" shape="round" size="medium">Admin</button>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('profesor')" shape="round" size="medium">Profesor</button>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('alumno')" shape="round" size="medium">Alumno</button>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('admin2')" shape="round" size="medium">Admin2</button>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('profesor2')" shape="round" size="medium">Profesor2</button>
+                        <button type="button" class="btn btn-info" (click)="loguearUsuario('alumno2')" shape="round" size="medium">Alumno2</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->

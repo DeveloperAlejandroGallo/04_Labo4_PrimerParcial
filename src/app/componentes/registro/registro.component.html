@@ -1,0 +1,71 @@
+
+<body>
+
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="../../../assets/imagenes/login.png" class="card-img" alt="login">
+      </div>
+      <div class="col-md-8">
+        <div class="card text-center">
+          <div class="card-body">
+            <div class="card-header text-white bg-info">Alta de Usuario</div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="userProfile">Tipo de Usuario</label>
+              </div>
+              <select class="custom-select" id="userProfile" [(ngModel)]="perfil">
+                <option selected>Seleccione un tipo de usuario</option>
+                <option value="Alumno">Alumno</option>
+                <option value="Profesor">Profesor</option>
+                <option value="Administrador">Administrador</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Nombre</span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="nombre" placeholder="Nombre"
+                aria-label="Nombre" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon4">Apellido</span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="apellido" placeholder="Apellido"
+                aria-label="Apellido" aria-describedby="basic-addon4">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">Email</span>
+              </div>
+              <input type="email" class="form-control" [(ngModel)]="email" placeholder="e-mail" aria-label="Email"
+                aria-describedby="basic-addon2">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Clave</span>
+              </div>
+              <input type="password" class="form-control" [(ngModel)]="clave" placeholder="Clave" aria-label="Clave"
+                aria-describedby="basic-addon1">
+            </div>
+            <h5>Imágen</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <app-subir-imagen (detalleImagenOutput)="imgUpload($event)"></app-subir-imagen>
+              </div>
+            </div>
+            <hr>
+            <!-- <recaptcha [(ngModel)]="myRecaptcha" (scriptLoad)="onScriptLoad()" (scriptError)="onScriptError()">
+            </recaptcha> -->
+            <div class="mx-auto">
+              <button type="button" class="btn btn-info" (click)="registrar()" shape="round"
+                size="medium">Registrarse</button>
+              <button type="button" class="btn btn-info" (click)="volver()" shape="round" size="medium">Volver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

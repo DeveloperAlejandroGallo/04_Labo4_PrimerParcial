@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/PrimerParcial",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
