@@ -3,7 +3,7 @@ import { Pais } from './pais';
 
 export class Pelicula {
     nombre: string;
-    anio: string;
+    anio: number;
     actores: Array<Actor>;
     pais: Pais;
     director: string;
@@ -12,7 +12,7 @@ export class Pelicula {
     foto?: string;
     id?: string;
 
-    constructor(nombre: string, anio: string, actores: Array<Actor>, pais: Pais, director: string,
+    constructor(nombre: string, anio: number, actores: Array<Actor>, pais: Pais, director: string,
         genero: string, activo: boolean, foto?: string, id?: string,) {
         this.nombre = nombre;
         this.anio = anio;

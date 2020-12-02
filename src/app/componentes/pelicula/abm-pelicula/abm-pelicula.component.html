@@ -1,105 +1,95 @@
+<h4 class="d-flex justify-content-between align-items-center mb-12">
+  <span class="text-muted">{{accion()}} Película</span>
+</h4>
 <div class="card">
-    <h4 class="d-flex justify-content-between align-items-center mb-6">
-      <span class="text-muted">{{accion()}} Actor/Actriz</span>
-    </h4>
-    <form >
-      <div class="row">
-        <div class="col-md-6 mb-6">
-          <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="" 
-            [(ngModel)]="actorInput.nombre" appDeshabilitar [deshabilitar]="noEsEditable()">
-          <!-- <div class="invalid-feedback">
-            Ingrese un nombre válido
-          </div> -->
-        </div>
+  <!-- <form> -->
+    <div class="row">
+      <div class="col-md-12 mb-12">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="" [(ngModel)]="nombre"
+          appDeshabilitar [deshabilitar]="noEsEditable()">
       </div>
-      <div class="row">
-        <div class="col-md-6 mb-6">
-          <label for="apellido">Apellido</label>
-          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="actorInput.apellido" placeholder=""
-            value=""  appDeshabilitar [deshabilitar]="noEsEditable()">
-          <!-- <div class="invalid-feedback">
-            Ingrese un apellido válido
-          </div> -->
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-12">
+        <label for="nombre">Director</label>
+        <input type="text" class="form-control" id="director" name="director" placeholder="" value=""
+          [(ngModel)]="director" appDeshabilitar [deshabilitar]="noEsEditable()">
       </div>
-      <div class="row">
-        <div class="col-md-6 mb-6">
-          <label for="sexo">Sexo</label>
-          <select class="custom-select d-block w-100" id="sexo" name="sexo" [(ngModel)]="actorInput.sexo" appDeshabilitar [deshabilitar]="noEsEditable()">
-            <option value="F" selected>Femenino</option>
-            <option value="M">Masculino</option>
-          </select>
-          <!-- <div class="invalid-feedback">
-            Por favor seleccione un sexo
-          </div> -->
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-12">
+        <label for="apellido">Año</label>
+        <input type="number" class="form-control" id="anio" name="anio" [(ngModel)]="anio" placeholder="" value=""
+          appDeshabilitar [deshabilitar]="noEsEditable()">
       </div>
-      <div class="row">
-        <div class="col-md-6 mb-6">
-          <label for="fechaNac">Fecha de Nacimiento</label><br>
-          <input type="date" [(ngModel)]="actorInput.fechaDeNacimiento" id="fechaNac" name="fechaNac" placeholder="" value=""
-             appDeshabilitar [deshabilitar]="noEsEditable()">
-          <!-- <div class="invalid-feedback">
-            Por favor seleccione una fecha
-          </div> -->
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-12">
+        <label for="sexo">Género</label>
+        <select class="custom-select d-block w-100" id="genero" name="genero" [(ngModel)]="genero" appDeshabilitar
+          [deshabilitar]="noEsEditable()">
+          <option value="Accion" selected>Accion</option>
+          <option value="Aventura">Aventura</option>
+          <option value="Animacion">Animacion</option>
+          <option value="Biografia">Biografia</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Crimen">Crimen</option>
+          <option value="Documental">Documental</option>
+          <option value="Drama">Drama</option>
+          <option value="Guerra">Guerra</option>
+          <option value="Musical">Musical</option>
+          <option value="Terror">Terror</option>
+        </select>
       </div>
-      <div class="row" *ngIf="esAlta()">
-        <div class="col-md-6 mb-6">
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-12">
+        <label for="apellido">Actores</label>
+        <ul class="list-group mb-3" style="max-height: 100px;">
+          <li *ngFor="let actor of listaActoresInput"
+            class="list-group-item d-flex justify-content-between lh-condensed">
+            <!--*ngIf="i<10"  -->
+            <!-- <img [src]="actor.foto" style="width: 50px; height: 30px; margin-left: 10px;"> -->
+            <small>{{actor.nombre +', '+actor.apellido}}</small>
+            <!-- <button type="button" class="btn btn-primary" (click)="quitarActor(actor)">Quitar</button>  -->
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="row" *ngIf="esAlta()">
+        <div class="col-md-12 mb-12">
           <label for="fechaNac">Foto</label><br>
           <app-subir-imagen (detalleImagenOutput)="imgUpload($event)"></app-subir-imagen>
-          <!-- <div class="invalid-feedback">
+           <div class="invalid-feedback">
             Por favor seleccione una foto
-          </div> -->
+          </div> 
         </div>
-      </div>
-      <div class="row" *ngIf="!esAlta()">
-        <div class="col-md-6 mb-6">
-          <label for="fechaNac">Foto</label><br>
-          <img [src]="actorInput.foto" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
-        </div>
-      </div>
-      <div class="row" *ngIf="!esAlta()">
-        <div class="col-12">
-          <label for="pais">Nacionalidad</label>
-          <div class="row">
-            <div class="col-2">
-              <img [src]="actorInput.nacionalidad.flag" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
-            </div>
-            <div class="col-10">
-              <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
-                placeholder="Seleccione una nacionaliddad." [(ngModel)]="actorInput.nacionalidad.name" disabled>
-            </div>
+      </div> -->
+    <div class="row" *ngIf="esAlta()">
+      <div class="col-12">
+        <label for="pais">Pais Origen</label>
+        <div class="row">
+          <div class="col-2">
+            <img [src]="paisInput.flag" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
           </div>
-          <!-- <div class="invalid-feedback">
+          <div class="col-10">
+            <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
+              placeholder="Seleccione una nacionaliddad." [(ngModel)]="paisInput.name" disabled>
+          </div>
+        </div>
+        <!-- <div class="invalid-feedback">
             Por favor seleccione una nacionalidad
           </div> -->
-        </div>
       </div>
-      <div class="row" *ngIf="esAlta()">
-        <div class="col-12">
-          <label for="pais">Nacionalidad</label>
-          <div class="row">
-            <div class="col-2">
-              <img [src]="nacionalidadInput.flag" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
-            </div>
-            <div class="col-10">
-              <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
-                placeholder="Seleccione una nacionaliddad." [(ngModel)]="nacionalidadInput.name" disabled>
-            </div>
-          </div>
-          <!-- <div class="invalid-feedback">
-            Por favor seleccione una nacionalidad
-          </div> -->
-        </div>
-      </div>
-      <hr class="mb-4">
-      <button *ngIf="esAlta()" class="btn btn-primary btn-lg btn-block" type="submit"
-        (click)="crearActor()">Guardar</button>
-      <button *ngIf="esBaja()" class="btn btn-danger  btn-lg btn-block" type="submit"
-        (click)="bajaActor()">Eliminar</button>
+    </div>
+    <hr class="mb-4">
+    <button *ngIf="esAlta()" class="btn btn-primary btn-lg btn-block" type="button"
+      (click)="crearPelicula()">Guardar</button>
+    <!-- <button class="btn btn-danger  btn-lg btn-block" (click)="check()">check</button> -->
+    <!-- <button *ngIf="esBaja()" class="btn btn-danger  btn-lg btn-block" type="submit"
+        (click)="bajaPelicula()">Eliminar</button>
       <button *ngIf="esModificacion()" class="btn btn-warning btn-lg btn-block" type="submit"
-        (click)="modificarActor()">Modificar</button>
-    </form>
-  </div>
+        (click)="modificarPelicula()">Modificar</button> -->
+  <!-- </form> -->
+</div>

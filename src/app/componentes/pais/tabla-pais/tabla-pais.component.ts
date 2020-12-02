@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Pais } from 'src/app/clase/pais';
 import { PaisesService } from 'src/app/servicio/paises.service';
 
@@ -12,7 +12,7 @@ export class TablaPaisComponent implements OnInit {
   constructor(private paisServ: PaisesService) { }
 
   @Output() paisOutput: EventEmitter<Pais> = new EventEmitter<Pais>();
-
+  @Input() alturaMax: string;
   paisListado: Array<Pais>;
 
 
