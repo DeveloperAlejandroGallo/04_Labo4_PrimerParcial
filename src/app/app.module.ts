@@ -20,6 +20,20 @@ import { SubirImagenComponent } from './componentes/subir-imagen/subir-imagen.co
 import { HttpClientModule } from '@angular/common/http';
 import { CambiaColorDirective } from './directivas/cambia-color.directive';
 import { UsuariosPipe } from './pipes/usuarios.pipe';
+import { TablaPaisComponent } from './componentes/pais/tabla-pais/tabla-pais.component';
+import { AltaActorComponent } from './componentes/actor/alta-actor/alta-actor.component';
+import { TablaActorComponent } from './componentes/actor/tabla-actor/tabla-actor.component';
+import { TablaPeliculaComponent } from './componentes/pelicula/tabla-pelicula/tabla-pelicula.component';
+import { MenuPeliculaComponent } from './componentes/pelicula/menu-pelicula/menu-pelicula.component';
+import { MenuActorComponent } from './componentes/actor/menu-actor/menu-actor.component';
+import { MenuPaisComponent } from './componentes/pais/menu-pais/menu-pais.component';
+import { AltaPeliculaComponent } from './componentes/pelicula/alta-pelicula/alta-pelicula.component';
+import { AbmActorComponent } from './componentes/actor/abm-actor/abm-actor.component';
+import { ListadoActorComponent } from './componentes/actor/listado-actor/listado-actor.component';
+import { PeliculasActorComponent } from './componentes/actor/peliculas-actor/peliculas-actor.component';
+import { PaisPeliculaComponent } from './componentes/actor/pais-pelicula/pais-pelicula.component';
+import { DetalleActorComponent } from './componentes/actor/detalle-actor/detalle-actor.component';
+import { DeshabilitarDirective } from './directivas/deshabilitar.directive';
 
 
 
@@ -34,6 +48,20 @@ import { UsuariosPipe } from './pipes/usuarios.pipe';
     SubirImagenComponent,
     CambiaColorDirective,
     UsuariosPipe,
+    TablaPaisComponent,
+    AltaActorComponent,
+    TablaActorComponent,
+    TablaPeliculaComponent,
+    MenuPeliculaComponent,
+    MenuActorComponent,
+    MenuPaisComponent,
+    AltaPeliculaComponent,
+    AbmActorComponent,
+    ListadoActorComponent,
+    PeliculasActorComponent,
+    PaisPeliculaComponent,
+    DetalleActorComponent,
+    DeshabilitarDirective
     ],
   imports: [
     BrowserModule,

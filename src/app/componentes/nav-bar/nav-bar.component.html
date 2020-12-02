@@ -13,12 +13,12 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <!-- <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2"
-                routerLink="/Login">Ingresar</button>
-            <button *ngIf="!(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0"
-                routerLink="/Registro">Registrarse</button>
             <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-success my-2 mr-sm-2"
-                routerLink="/MiPerfil">Mi Perfil</button> -->
+                routerLink="/actores">Actores</button>
+            <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-info my-2 mr-sm-2"
+                routerLink="/peliculas">Peliculas</button>
+            <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-primary my-2 mr-sm-2"
+                routerLink="/paises">Paises</button>
             <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0"
                 (click)="cerrarSesion()">Salir</button>
         </form>

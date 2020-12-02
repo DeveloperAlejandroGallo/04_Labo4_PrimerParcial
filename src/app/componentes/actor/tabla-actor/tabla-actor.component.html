@@ -1,0 +1,11 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Actores</span>
+</h4>
+<ul class="list-group mb-3" style="max-height: 500px;">
+    <div *ngFor="let actor of actoresListado; let i=index">
+        <li class="list-group-item d-flex justify-content-between lh-condensed" (click)="seleccionarActor(actor)"><!--*ngIf="i<10"  -->
+            <div><small class="text-muted">{{actor.nombre +','+actor.apellido}}</small></div>
+            <!-- <div><button type="button" class="btn btn-primary"  (click)="seleccionarActor(actor)">Seleccionar</button></div> -->
+        </li>
+    </div>
+</ul>

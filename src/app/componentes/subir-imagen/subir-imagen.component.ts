@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StorageFirebaseService } from 'src/app/servicio/storage-firebase.service';
 
@@ -10,6 +10,8 @@ import { StorageFirebaseService } from 'src/app/servicio/storage-firebase.servic
 export class SubirImagenComponent implements OnInit {
 
   @Output() detalleImagenOutput : EventEmitter<any> = new EventEmitter<any>();
+  @Input() imagenInput: string;
+  
   public archivoForm;
   constructor(private firebaseStorage: StorageFirebaseService) { }
 

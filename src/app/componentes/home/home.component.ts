@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/clase/usuario';
 import { AutenticarFirebaseService } from 'src/app/servicio/autenticar-firebase.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
@@ -10,7 +11,8 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private autentica: AutenticarFirebaseService) { }
+  constructor(private autentica: AutenticarFirebaseService,
+              private router: Router) { }
 
   usuario: Usuario = null;
 
@@ -21,5 +23,17 @@ export class HomeComponent implements OnInit {
     // console.log('ingreso s recibir usr');
     this.usuario = usr;
   }
+
+  public menuActores() {
+    this.router.navigate(['/actores']);
+  }
+  public menuPeliculas() {
+    this.router.navigate(['/peliculas']);
+  }
+  public menuPaises() {
+    this.router.navigate(['/paises']);
+  }
+
+
 
 }

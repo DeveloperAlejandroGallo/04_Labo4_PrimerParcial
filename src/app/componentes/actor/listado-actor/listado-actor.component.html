@@ -1,0 +1,19 @@
+<app-nav-bar></app-nav-bar>
+<div class="jumbotron">
+    <div class="container">
+        <app-tabla-actor (actorOutput)="recibirActor($event)"></app-tabla-actor>
+    </div>
+</div>
+<div class="container">
+    <div class="row" *ngIf="actorSeleccionado">
+        <div class="col-md-4">
+            <app-abm-actor [abmInput]="'b'" [actorInput]="actorSeleccionado"></app-abm-actor>
+        </div>
+        <div class="col-md-4">
+            <app-abm-actor [abmInput]="'v'" [actorInput]="actorSeleccionado"></app-abm-actor>
+        </div>
+        <div class="col-md-4">
+            <app-abm-actor [abmInput]="'m'" [actorInput]="actorSeleccionado"></app-abm-actor>
+        </div>
+    </div>
+</div>
