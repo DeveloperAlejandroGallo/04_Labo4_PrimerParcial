@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Actor } from 'src/app/clase/actor';
 import { Pais } from 'src/app/clase/pais';
+import { ActoresService } from 'src/app/servicio/actores.service';
+import { PaisesService } from 'src/app/servicio/paises.service';
 
 @Component({
   selector: 'app-alta-pelicula',
@@ -9,30 +11,43 @@ import { Pais } from 'src/app/clase/pais';
 })
 export class AltaPeliculaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private actorServ: ActoresService,
+              private paisServ: PaisesService) { }
 
   // @Output() listaActorOutput: EventEmitter<Array<Actor>> = new EventEmitter<Array<Actor>>() ;
   // @Output() paisOutput: EventEmitter<Pais> = new EventEmitter<Pais>();
 
-  listaActores: Array<Actor> = new Array<Actor>();
+  listaActoresSeleccionados: Array<Actor> = new Array<Actor>();
+  listaActores = Array<Actor>();
+  listaPaises = Array<Pais>();
   pais: Pais;
 
   ngOnInit(): void {
+    this.actorServ.obtenerActores().subscribe((actores: Array<Actor>) => {
+      this.listaActores = actores;
+      this.listaActores = this.listaActores.filter(act => act.activo == true);
+
+    });
+
+    this.paisServ.leerPaises().subscribe((paises: Array<Pais>)=>{
+      this.listaPaises = paises;
+    });
+
   }
 
 
   public recibirActor(actor: Actor) {
     console.log('recibiendo actor'+actor.nombre);
     var encontrado = false;
-    for(let i=0; i < this.listaActores.length;i++) {
-      if(this.listaActores[i].id == actor.id) {
+    for(let i=0; i < this.listaActoresSeleccionados.length;i++) {
+      if(this.listaActoresSeleccionados[i].id == actor.id) {
         encontrado = true;
         break;
       }
     }
     if(!encontrado) {
-      console.log(this.listaActores);
-      this.listaActores.push(actor);
+      console.log(this.listaActoresSeleccionados);
+      this.listaActoresSeleccionados.push(actor);
     }
   }
 
@@ -42,7 +57,7 @@ export class AltaPeliculaComponent implements OnInit {
 
   public recibirLimpieza(limpiar: boolean) {
     if(limpiar) {
-      this.listaActores = [];
+      this.listaActoresSeleccionados = [];
     }
   }
 

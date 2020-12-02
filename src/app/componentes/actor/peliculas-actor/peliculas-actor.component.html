@@ -1,19 +1,23 @@
 <app-nav-bar></app-nav-bar>
-<div class="jumbotron jumbotron-fluid">
+<body class="bg-dark">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <app-tabla-actor (actorOutput)="recibirActor($event)" [listaActorInput]="listaActores"></app-tabla-actor>
+        </div>
+    </div>
     <div class="container">
-        <app-tabla-actor (actorOutput)="recibirActor($event)"></app-tabla-actor>
+        <div class="row" *ngIf="actorSeleccionado">
+            <div class="col-md-4">
+                <app-tabla-pelicula [actorInput]="actorSeleccionado" [listaPeliculasInput]="listaPeliculas">
+                </app-tabla-pelicula>
+            </div>
+            <div class="col-md-4">
+                <app-detalle-pais [paisInput]="paisSeleccionado" >
+                </app-detalle-pais>
+            </div>
+            <div class="col-md-4">
+                <app-detalle-actor [actorInput]="actorSeleccionado" [bajaInput]="false"></app-detalle-actor>
+            </div>
+        </div>
     </div>
-</div>
-<div class="container">
-    <div class="row" *ngIf="actorSeleccionado">
-        <div class="col-md-4">
-            <app-tabla-pelicula [actorInput]="actorSeleccionado" [listaPeliculasInput]="listaPeliculas"></app-tabla-pelicula>
-        </div>
-        <div class="col-md-4">
-            <app-detalle-pais [paisInput]="actorSeleccionado.pais" [actorInput]="actorSeleccionado"></app-detalle-pais>
-        </div>
-        <div class="col-md-4">
-            <app-detalle-actor [actorInput]="actorSeleccionado" [bajaInput]="false"></app-detalle-actor>
-        </div>
-    </div>
-</div>
+</body>

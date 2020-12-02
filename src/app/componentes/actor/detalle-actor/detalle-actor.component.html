@@ -1,11 +1,14 @@
-<div class="card" style="width: 18rem; height: 28rem">
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted">Detalle Actor</span>
+</h4>
+<div class="card" style="width: 18rem; height: 25rem">
     <div class="card-body">
       <h5 class="card-title">{{actorInput.nombre +', '+actorInput.apellido}} </h5>
       <h6 class="card-text mb-2 text-muted">Sexo: {{actorInput.sexo}}</h6>
       <h6 class="card-text mb-2 text-muted">Fecha de nacimiento: {{actorInput.fechaDeNacimiento | date:"dd/MM/yyyy"}}</h6>
       <h6 class="card-text mb-2 text-muted">Nacionalidad: {{actorInput.nacionalidad.name}}</h6>
       <img [src]="actorInput.foto" width="150px" height="130px" class="rounded mx-auto d-block" alt="...">
-      <button *ngIf="bajaInput" type="button" class="btn btn-danger" (click)="eliminarActor()">Eliminar</button>
     </div>
+    <button *ngIf="bajaInput" type="button" class="btn btn-danger  btn-lg btn-block" (click)="eliminarActor()">Eliminar</button>
   </div>
   <br>

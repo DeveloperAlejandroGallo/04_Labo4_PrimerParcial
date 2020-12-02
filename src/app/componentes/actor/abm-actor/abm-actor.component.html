@@ -1,10 +1,10 @@
-<h4 class="d-flex justify-content-between align-items-center mb-6">
+<h4 class="d-flex justify-content-between align-items-center mb-12">
   <span class="text-muted">{{accion()}} Actor/Actriz</span>
 </h4>
 <div class="card">
   <form >
     <div class="row">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="" 
           [(ngModel)]="actorInput.nombre" appDeshabilitar [deshabilitar]="noEsEditable()">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="apellido">Apellido</label>
         <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="actorInput.apellido" placeholder=""
           value=""  appDeshabilitar [deshabilitar]="noEsEditable()">
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="sexo">Sexo</label>
         <select class="custom-select d-block w-100" id="sexo" name="sexo" [(ngModel)]="actorInput.sexo" appDeshabilitar [deshabilitar]="noEsEditable()">
           <option value="F" selected>Femenino</option>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="fechaNac">Fecha de Nacimiento</label><br>
         <input type="date" [(ngModel)]="actorInput.fechaDeNacimiento" id="fechaNac" name="fechaNac" placeholder="" value=""
            appDeshabilitar [deshabilitar]="noEsEditable()">
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="row" *ngIf="esAlta()">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="fechaNac">Foto</label><br>
         <app-subir-imagen (detalleImagenOutput)="imgUpload($event)"></app-subir-imagen>
         <!-- <div class="invalid-feedback">
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="row" *ngIf="!esAlta()">
-      <div class="col-md-6 mb-6">
+      <div class="col-md-12 mb-12">
         <label for="fechaNac">Foto</label><br>
         <img [src]="actorInput.foto" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
       </div>

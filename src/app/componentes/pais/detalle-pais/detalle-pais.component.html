@@ -1,12 +1,15 @@
-<div class="card" style="width: 18rem; height: 28rem">
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-muted">Detalle País</span>
+</h4>
+<div class="card" style="width: 18rem; height: 25rem">
     <div class="card-body">
-      <h5 class="card-title">{{actorInput.nacionalidad.name}} </h5>
-      <h6 class="card-text mb-2 text-muted">Capital: {{actorInput.nacionalidad.capital}}</h6>
-      <h6 class="card-text mb-2 text-muted">Region: {{actorInput.nacionalidad.region}}</h6>
-      <h6 class="card-text mb-2 text-muted">Sub Region: {{actorInput.nacionalidad.subregion}}</h6>
-      <h6 class="card-text mb-2 text-muted">Población: {{actorInput.nacionalidad.population}}</h6>
-      <h6 class="card-text mb-2 text-muted">Codigo Pais: {{actorInput.nacionalidad.alpha2Code}}</h6>
-      <img [src]="actorInput.nacionalidad.flag" width="150px" height="130px" class="rounded mx-auto d-block" alt="...">
+      <h5 class="card-title">{{paisInput.name}} </h5>
+      <h6 class="card-text mb-2 text-muted">Capital: {{paisInput.capital}}</h6>
+      <h6 class="card-text mb-2 text-muted">Region: {{paisInput.region}}</h6>
+      <h6 class="card-text mb-2 text-muted">Sub Region: {{paisInput.subregion}}</h6>
+      <h6 class="card-text mb-2 text-muted">Población: {{paisInput.population}}</h6>
+      <h6 class="card-text mb-2 text-muted">Codigo Pais: {{paisInput.alpha2Code}}</h6>
+      <img [src]="paisInput.flag" width="150px" height="130px" class="rounded mx-auto d-block" alt="...">
     </div>
   </div>
   <br>

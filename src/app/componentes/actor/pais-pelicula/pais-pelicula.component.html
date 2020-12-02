@@ -1,1 +1,21 @@
-<p>pais-pelicula works!</p>
+<app-nav-bar></app-nav-bar>
+<body class="bg-dark">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <app-tabla-pais (paisOutput)="recibirPais($event)" [listaPaisInput]="listaPaises"></app-tabla-pais>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" *ngIf="paisSeleccionado">
+            <div class="col-md-4">
+                <app-tabla-pelicula [listaPeliculasInput]="listaPeliculas"></app-tabla-pelicula>
+            </div>
+            <div class="col-md-4">
+                <app-tabla-actor [listaActorInput]="listaActores"></app-tabla-actor>
+            </div>
+            <div class="col-md-4">
+                <app-detalle-pais [paisInput]="paisSeleccionado" ></app-detalle-pais>
+            </div>
+        </div>
+    </div>
+</body>

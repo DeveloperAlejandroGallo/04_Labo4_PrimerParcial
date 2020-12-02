@@ -13,17 +13,13 @@ export class TablaPaisComponent implements OnInit {
 
   @Output() paisOutput: EventEmitter<Pais> = new EventEmitter<Pais>();
   @Input() alturaMax: string;
-  paisListado: Array<Pais>;
+  @Input() listaPaisInput = Array<Pais>();
+
 
 
   ngOnInit(): void {
 
-    this.paisServ.leerPaises().subscribe((paises: Array<Pais>) => {
-      this.paisListado = paises;
-      console.table(paises);
-    }, err => {
-      console.error('Error al leer los paises: ' + err);
-    });
+
   }
 
   public seleccionarPais(pais: Pais) {

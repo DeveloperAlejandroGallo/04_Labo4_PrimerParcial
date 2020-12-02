@@ -10,15 +10,15 @@ import { Pais } from 'src/app/clase/pais';
 export class DetallePaisComponent implements OnInit {
 
   constructor() { 
-    // console.log('Constructor:'+this.paisInput);
-    console.log('Constructor:'+this.actorInput);
+    console.log('Constructor:'+this.paisInput);
+    
   }
   @Input() paisInput: Pais;
-  @Input() actorInput: Actor;
+  // @Input() actorInput: Actor;
 
   ngOnInit(): void {
-    // console.log('Init:'+this.paisInput);
-    console.log('Init:'+this.actorInput.nacionalidad);
+     console.log('Init:'+this.paisInput);
+    // console.log('Init:'+this.actorInput.nacionalidad);
   }
 
 }

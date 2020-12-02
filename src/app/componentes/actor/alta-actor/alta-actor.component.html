@@ -3,7 +3,7 @@
     <div class="container" style="padding: 10px;">
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4" style="padding: 10px;">
-                <app-tabla-pais (paisOutput)="recibirPais($event)"></app-tabla-pais>
+                <app-tabla-pais (paisOutput)="recibirPais($event)" [listaPaisInput]="listaPaises"></app-tabla-pais>
             </div>
             <div class="col-md-8 order-md-1">
                 <app-abm-actor [nacionalidadInput]="pais" [abmInput]="'a'"></app-abm-actor>

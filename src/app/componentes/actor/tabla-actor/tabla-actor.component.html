@@ -3,14 +3,14 @@
 </h4>
 <div class="card">
     <ul class="list-group mb-3" style="max-height: 250px;">
-        <li *ngFor="let actor of actoresListado" class="list-group-item d-flex justify-content-between lh-condensed"
+        <li *ngFor="let actor of listaActorInput" class="list-group-item d-flex justify-content-between lh-condensed"
         (click)="seleccionarActor(actor)">
         <!--*ngIf="i<10"  -->
             <!-- <div>
                 <h6> {{actor.nombre +','+actor.apellido}}</h6>
             </div> -->
             <div>
-                <small class="text-muted">{{actor.nombre +','+actor.apellido}}</small>
+                <small class="text-muted">{{actor.nombre +', '+actor.apellido}}</small>
             </div>
             <img [src]="actor.foto" style="width: 50px; height: 30px;">
             <!-- <button type="button" class="btn btn-primary" (click)="seleccionarActor(actor)">Seleccionar</button> -->
