@@ -1,0 +1,105 @@
+<div class="card">
+    <h4 class="d-flex justify-content-between align-items-center mb-6">
+      <span class="text-muted">{{accion()}} Actor/Actriz</span>
+    </h4>
+    <form >
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="" 
+            [(ngModel)]="actorInput.nombre" appDeshabilitar [deshabilitar]="noEsEditable()">
+          <!-- <div class="invalid-feedback">
+            Ingrese un nombre válido
+          </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="apellido">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="actorInput.apellido" placeholder=""
+            value=""  appDeshabilitar [deshabilitar]="noEsEditable()">
+          <!-- <div class="invalid-feedback">
+            Ingrese un apellido válido
+          </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="sexo">Sexo</label>
+          <select class="custom-select d-block w-100" id="sexo" name="sexo" [(ngModel)]="actorInput.sexo" appDeshabilitar [deshabilitar]="noEsEditable()">
+            <option value="F" selected>Femenino</option>
+            <option value="M">Masculino</option>
+          </select>
+          <!-- <div class="invalid-feedback">
+            Por favor seleccione un sexo
+          </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-6">
+          <label for="fechaNac">Fecha de Nacimiento</label><br>
+          <input type="date" [(ngModel)]="actorInput.fechaDeNacimiento" id="fechaNac" name="fechaNac" placeholder="" value=""
+             appDeshabilitar [deshabilitar]="noEsEditable()">
+          <!-- <div class="invalid-feedback">
+            Por favor seleccione una fecha
+          </div> -->
+        </div>
+      </div>
+      <div class="row" *ngIf="esAlta()">
+        <div class="col-md-6 mb-6">
+          <label for="fechaNac">Foto</label><br>
+          <app-subir-imagen (detalleImagenOutput)="imgUpload($event)"></app-subir-imagen>
+          <!-- <div class="invalid-feedback">
+            Por favor seleccione una foto
+          </div> -->
+        </div>
+      </div>
+      <div class="row" *ngIf="!esAlta()">
+        <div class="col-md-6 mb-6">
+          <label for="fechaNac">Foto</label><br>
+          <img [src]="actorInput.foto" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
+        </div>
+      </div>
+      <div class="row" *ngIf="!esAlta()">
+        <div class="col-12">
+          <label for="pais">Nacionalidad</label>
+          <div class="row">
+            <div class="col-2">
+              <img [src]="actorInput.nacionalidad.flag" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
+            </div>
+            <div class="col-10">
+              <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
+                placeholder="Seleccione una nacionaliddad." [(ngModel)]="actorInput.nacionalidad.name" disabled>
+            </div>
+          </div>
+          <!-- <div class="invalid-feedback">
+            Por favor seleccione una nacionalidad
+          </div> -->
+        </div>
+      </div>
+      <div class="row" *ngIf="esAlta()">
+        <div class="col-12">
+          <label for="pais">Nacionalidad</label>
+          <div class="row">
+            <div class="col-2">
+              <img [src]="nacionalidadInput.flag" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
+            </div>
+            <div class="col-10">
+              <input type="text" class="form-control" id="nacionalidad" name="nacionalidad"
+                placeholder="Seleccione una nacionaliddad." [(ngModel)]="nacionalidadInput.name" disabled>
+            </div>
+          </div>
+          <!-- <div class="invalid-feedback">
+            Por favor seleccione una nacionalidad
+          </div> -->
+        </div>
+      </div>
+      <hr class="mb-4">
+      <button *ngIf="esAlta()" class="btn btn-primary btn-lg btn-block" type="submit"
+        (click)="crearActor()">Guardar</button>
+      <button *ngIf="esBaja()" class="btn btn-danger  btn-lg btn-block" type="submit"
+        (click)="bajaActor()">Eliminar</button>
+      <button *ngIf="esModificacion()" class="btn btn-warning btn-lg btn-block" type="submit"
+        (click)="modificarActor()">Modificar</button>
+    </form>
+  </div>

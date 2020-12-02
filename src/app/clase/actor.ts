@@ -5,14 +5,14 @@ export class Actor {
     public apellido: string;
     public sexo: string;
     public fechaDeNacimiento: Date;
-    public nacionalidad: Pais;
     public activo: boolean;
+    public nacionalidad?: Pais;
     public foto?: string;
     public fechaBaja?: Date;
     public id?: string;
 
-  constructor(nombre: string,apellido: string,sexo: string,fechaDeNacimiento: Date,nacionalidad: Pais,
-              activo: boolean, foto?: string, fechaBaja?: Date, id?: string){
+  constructor(nombre: string,apellido: string,sexo: string,fechaDeNacimiento: Date,
+              activo: boolean,nacionalidad?: Pais, foto?: string, fechaBaja?: Date, id?: string){
       this.nombre = nombre;
       this.apellido = apellido;
       this.sexo = sexo;

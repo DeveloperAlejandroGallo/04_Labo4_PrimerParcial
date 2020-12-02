@@ -17,11 +17,14 @@ export class TablaActorComponent implements OnInit {
   ngOnInit(): void {
         this.actorServ.obtenerActores().subscribe((actores: Array<Actor>) => {
           this.actoresListado = actores;
+          this.actoresListado = this.actoresListado.filter(act => act.activo == true)
         });
   }
 
 
   public seleccionarActor(actor: Actor) {
+    console.log('emitiendo actor:'+actor.nombre);
+    // console.table(actor);
     this.actorOutput.emit(actor);
   }
 

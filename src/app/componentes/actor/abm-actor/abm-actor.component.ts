@@ -18,18 +18,18 @@ export class AbmActorComponent implements OnInit {
                }
 
   @Input() nacionalidadInput: Pais;
-  @Input() actorInput: Actor;
+  @Input() actorInput: Actor = new Actor('','','',new Date(),true);
   @Input() abmInput: string; //a: alta - b: baja - m: modificacion - v: visualizacion
   @Output() actorOutput: EventEmitter<Actor> = new EventEmitter<Actor>();
 
   actor: Actor;
   //--------
-  nombre: string;
-  apellido: string;
-  sexo: string;
-  fechaDeNacimiento: Date;
-  // nacionalidad: Pais;
-  activo: boolean;
+  // nombre: string;
+  // apellido: string;
+  // sexo: string;
+  // fechaDeNacimiento: Date;
+  // // nacionalidad: Pais;
+  // activo: boolean;
   msg: string;
   
 
@@ -39,14 +39,14 @@ export class AbmActorComponent implements OnInit {
 
     // this.nacionalidadInput.flag = '../../../assets/imagenes/flags.png'; 
 
-    if(this.actorInput != undefined) {
-      this.nombre = this.actorInput.nombre;
-      this.apellido = this.actorInput.apellido;
-      this.sexo = this.actorInput.sexo;
-      this.fechaDeNacimiento = this.actorInput.fechaDeNacimiento;
-      this.nacionalidadInput = this.actorInput.nacionalidad;
-      this.foto = this.actorInput.foto;
-    }
+    // if(this.actorInput != undefined) {
+    //   this.nombre = this.actorInput.nombre;
+    //   this.apellido = this.actorInput.apellido;
+    //   this.sexo = this.actorInput.sexo;
+    //   this.fechaDeNacimiento = this.actorInput.fechaDeNacimiento;
+    //   this.nacionalidadInput = this.actorInput.nacionalidad;
+    //   this.foto = this.actorInput.foto;
+    // }
   }
 
 
@@ -57,20 +57,20 @@ export class AbmActorComponent implements OnInit {
       let refImg;
 
       let actorMetaData = {
-        nombre: this.nombre,
-        apellido: this.apellido
+        nombre: this.actorInput.nombre,
+        apellido: this.actorInput.apellido
       };
   
-      this.fireStorage.uploadFile(this.nombre+'_'+this.apellido , this.foto, actorMetaData).then(resp => {
-        refImg = this.fireStorage.linkToPublicFile(this.nombre+'_'+this.apellido);
+      this.fireStorage.uploadFile(this.actorInput.nombre+'_'+this.actorInput.apellido , this.foto, actorMetaData).then(resp => {
+        refImg = this.fireStorage.linkToPublicFile(this.actorInput.nombre+'_'+this.actorInput.apellido);
         refImg.getDownloadURL().subscribe((URL) => {
           this.publicURL = URL;
 
-          this.actor = new Actor(this.nombre, this.apellido, this.sexo, this.fechaDeNacimiento,this.nacionalidadInput, true, this.publicURL);
+          this.actor = new Actor(this.actorInput.nombre, this.actorInput.apellido, this.actorInput.sexo, this.actorInput.fechaDeNacimiento, true, this.nacionalidadInput,this.publicURL);
           this.servActor.crearActor(this.actor).subscribe(ret => {
             Swal.fire({
               title: 'Exito',
-              text: `${this.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.nombre}, ${this.apellido} creado con éxito`,
+              text: `${this.actorInput.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.actorInput.nombre}, ${this.actorInput.apellido} creado con éxito`,
               icon: 'success',
               timer: 1500,
               showConfirmButton: false
@@ -94,14 +94,22 @@ export class AbmActorComponent implements OnInit {
 
   public modificarActor() {
     if(this.datosValidos()) {
-      this.actor = new Actor(this.nombre, this.apellido, this.sexo, this.fechaDeNacimiento,this.nacionalidadInput, true);
+      console.log('Ingreso a modificar')
+      this.actor = new Actor(this.actorInput.nombre, this.actorInput.apellido, this.actorInput.sexo, this.actorInput.fechaDeNacimiento, true,this.actorInput.nacionalidad);
       this.servActor.modificarActor(this.actorInput.id, this.actor);
       Swal.fire({
         title: 'Exito',
-        text: `${this.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.nombre}, ${this.apellido} modificado con éxito`,
+        text: `${this.actorInput.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.actorInput.nombre}, ${this.actorInput.apellido} modificado con éxito`,
         icon: 'success',
         timer: 1500,
         showConfirmButton: false
+      });
+    }    
+    else {
+      Swal.fire({
+        title: 'Error',
+        text: this.msg,
+        icon: 'error'
       });
     }
   }
@@ -114,7 +122,7 @@ export class AbmActorComponent implements OnInit {
     this.servActor.modificarEstadoActor(this.actorInput.id, false);
     Swal.fire({
       title: 'Baja',
-      text: `${this.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.nombre}, ${this.apellido} a sido dado de baja`,
+      text: `${this.actorInput.sexo == 'M' ? 'El Actor' : 'La Actriz'} ${this.actorInput.nombre}, ${this.actorInput.apellido} a sido dado de baja`,
       icon: 'info',
       timer: 1500,
       showConfirmButton: false
@@ -126,13 +134,16 @@ export class AbmActorComponent implements OnInit {
   }
 
   public LimpiarCampos() {
-    this.nombre = '';
-    this.apellido = ''; 
-    this.sexo = ''; 
-    this.fechaDeNacimiento = null;
+    this.actorInput.nombre = '';
+    this.actorInput.apellido = ''; 
+    this.actorInput.sexo = ''; 
+    this.actorInput.fechaDeNacimiento = null;
+    this.actorInput.foto = '';
+    this.actorInput.nacionalidad.name = '';
+    this.actorInput.nacionalidad.flag = '';
     this.nacionalidadInput.name = '';
-    this.nacionalidadInput = null;
-    this.foto = '';
+    this.nacionalidadInput.flag = '';
+
   }
 
   public noEsEditable() {
@@ -177,29 +188,26 @@ export class AbmActorComponent implements OnInit {
 
     this.msg = 'Faltan los datos: '
 
-    if(this.nombre == '') {
+    if(this.actorInput.nombre == '') {
       this.msg += 'Nombre, ';
-      return false;
     }
-    if(this.apellido == '') {
+    if(this.actorInput.apellido == '') {
       this.msg += 'Apellido, ';
-      return false;
     }
-    if(this.sexo == '') {
+    if(this.actorInput.sexo == '') {
       this.msg += 'Sexo, ';
-      return false;
     }
-    if(this.fechaDeNacimiento == (null || undefined)) {
+    if(this.actorInput.fechaDeNacimiento == (null || undefined)) {
       this.msg += 'Fecha De Nacimiento, ';
-      return false;
-    }
-    if(this.nacionalidadInput == (null || undefined)) {
+    } 
+    if(!this.esAlta() && this.actorInput.nacionalidad == (null || undefined)) {
       this.msg += 'Nacionalidad, ';
-      return false;
     }
-    if(this.foto == '') {
+    if(this.esAlta() && this.nacionalidadInput == (null || undefined)) {
+      this.msg += 'Nacionalidad, ';
+    }
+    if(this.actorInput.foto == ('' || null || undefined)) {
       this.msg += 'Foto, ';
-      return false;
     }
 
     if(this.msg == 'Faltan los datos: '){
@@ -207,7 +215,7 @@ export class AbmActorComponent implements OnInit {
       return true;
     }
     else {
-      this.msg = this.msg.slice(0, - 2);
+      this.msg = this.msg.slice(0,  -2);
       return false;
     }
   }
