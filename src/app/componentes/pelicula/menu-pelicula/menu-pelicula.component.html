@@ -1,2 +1,22 @@
 <app-nav-bar></app-nav-bar>
-<p>menu-pelicula works!</p>
+<div class="card">
+    <div class="card-header">
+        <h5>Peliculas</h5>
+    </div>
+    <div class="card-group">
+        <div class="card">
+            <img src="../../../assets/imagenes/Peliculas1.jpg" class="card-img-top" alt="Películas" (click)="altaPelicula()">
+            <div class="card-body">
+                <h5 class="card-title">Películas</h5>
+                <p class="card-text">Alta de Peliculas.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="../../../assets/imagenes/actoresPeliculas.jpg" class="card-img-top" alt="Películas" (click)="detallePeliculas()">
+            <div class="card-body">
+                <h5 class="card-title">Detalle de Películas</h5>
+                <p class="card-text">Vea todas las peliculas y sus detalles</p>
+            </div>
+        </div>
+    </div>
+</div>

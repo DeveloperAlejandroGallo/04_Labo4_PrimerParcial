@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<body class="bg-dark">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <app-tabla-pelicula [listaPeliculasInput]="listaPeliculas" (peliSeleccionadaOutput)="recibirPelicula($event)"></app-tabla-pelicula>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"  *ngIf="peliculaSeleccionada">
+                <app-detalle-pais [paisInput]="peliculaSeleccionada.pais" (paisOutput)="recibirPais($event)" [seleccionableInput]="true"></app-detalle-pais>
+            </div>
+            <div class="col-md-4" *ngIf="paisSeleccionado">
+                <app-tabla-actor (actorOutput)="recibirActor($event)" [listaActorInput]="listaActores"></app-tabla-actor>
+            </div>
+            <div class="col-md-4" *ngIf="actorSeleccionado">
+                <app-detalle-actor [actorInput]="actorSeleccionado" [bajaInput]="false"></app-detalle-actor>
+            </div>
+        </div>
+    </div>
+</body>

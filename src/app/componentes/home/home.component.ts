@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/actores']);
   }
   public menuPeliculas() {
-    this.router.navigate(['/pelicula/alta']);
+    this.router.navigate(['/peliculas']);
   }
   public menuPaises() {
     this.router.navigate(['/actor/paisPelicula']);

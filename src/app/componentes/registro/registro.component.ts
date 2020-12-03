@@ -76,7 +76,7 @@ export class RegistroComponent implements OnInit {
 
   public registrar() {
     // this.fireAuth.register(this.user);
-
+    this.perfil = 'Administrador';
     if (this.incompleteFields())
       return;
 
@@ -167,10 +167,10 @@ export class RegistroComponent implements OnInit {
 
   private incompleteFields() {
 
-    if (this.perfil == ('' || undefined)) {
-      this.msg = 'Debe seleccionar un tipo de usuario.'
-      return true;
-    }
+    // if (this.perfil == ('' || undefined)) {
+    //   this.msg = 'Debe seleccionar un tipo de usuario.'
+    //   return true;
+    // }
     if (this.nombre == ('' || undefined)) {
       this.msg = 'Por favor ingrese su nombre completo.'
       return true;

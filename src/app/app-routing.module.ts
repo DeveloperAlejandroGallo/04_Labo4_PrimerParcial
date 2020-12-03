@@ -12,6 +12,7 @@ import { MenuPaisComponent } from './componentes/pais/menu-pais/menu-pais.compon
 import { AltaPeliculaComponent } from './componentes/pelicula/alta-pelicula/alta-pelicula.component';
 import { MenuPeliculaComponent } from './componentes/pelicula/menu-pelicula/menu-pelicula.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { DetallePeliculaComponent } from './componentes/pelicula/detalle-pelicula/detalle-pelicula.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'actor/peliculas', component: PeliculasActorComponent},
   {path: 'actor/paisPelicula', component: PaisPeliculaComponent},
   {path: 'pelicula/alta', component: AltaPeliculaComponent},
+  {path: 'pelicula/detalles', component: DetallePeliculaComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'error'}
 ];
 

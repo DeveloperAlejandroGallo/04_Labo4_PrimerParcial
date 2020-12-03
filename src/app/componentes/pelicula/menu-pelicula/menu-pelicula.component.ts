@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-pelicula',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPeliculaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  public altaPelicula() {
+    this.router.navigate(['/pelicula/alta']);
+  }
+
+    public detallePeliculas(){
+      this.router.navigate(['/pelicula/detalles']);
+    }
 
 }

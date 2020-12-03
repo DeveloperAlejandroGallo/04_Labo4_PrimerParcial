@@ -36,6 +36,7 @@ import { DetalleActorComponent } from './componentes/actor/detalle-actor/detalle
 import { DeshabilitarDirective } from './directivas/deshabilitar.directive';
 import { AbmPeliculaComponent } from './componentes/pelicula/abm-pelicula/abm-pelicula.component';
 import { DetallePaisComponent } from './componentes/pais/detalle-pais/detalle-pais.component';
+import { DetallePeliculaComponent } from './componentes/pelicula/detalle-pelicula/detalle-pelicula.component';
 
 
 
@@ -65,7 +66,8 @@ import { DetallePaisComponent } from './componentes/pais/detalle-pais/detalle-pa
     DetalleActorComponent,
     DeshabilitarDirective,
     AbmPeliculaComponent,
-    DetallePaisComponent
+    DetallePaisComponent,
+    DetallePeliculaComponent
     ],
   imports: [
     BrowserModule,

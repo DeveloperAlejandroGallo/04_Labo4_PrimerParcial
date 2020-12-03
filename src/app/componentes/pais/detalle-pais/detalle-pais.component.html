@@ -11,5 +11,6 @@
       <h6 class="card-text mb-2 text-muted">Codigo Pais: {{paisInput.alpha2Code}}</h6>
       <img [src]="paisInput.flag" width="150px" height="130px" class="rounded mx-auto d-block" alt="...">
     </div>
+    <button *ngIf="seleccionableInput" class="btn btn-primary btn-lg btn-block" type="button" (click)="seleccionarPais()">Ver Actores</button>
   </div>
   <br>
