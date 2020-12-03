@@ -60,7 +60,7 @@
         <img [src]="actorInput.foto" alt="Pais" style="width: 50px; height: 30px; margin-left: 10px;">
       </div>
     </div>
-    <div class="row" *ngIf="!esAlta()">
+    <div class="row" *ngIf="esModificacion() && !tieneNacionalidadInput()">
       <div class="col-12">
         <label for="pais">Nacionalidad</label>
         <div class="row">
@@ -72,12 +72,9 @@
               placeholder="Seleccione una nacionaliddad." [(ngModel)]="actorInput.nacionalidad.name" disabled>
           </div>
         </div>
-        <!-- <div class="invalid-feedback">
-          Por favor seleccione una nacionalidad
-        </div> -->
       </div>
     </div>
-    <div class="row" *ngIf="esAlta()">
+    <div class="row" *ngIf="esAlta() ||  (esModificacion() && tieneNacionalidadInput())">
       <div class="col-12">
         <label for="pais">Nacionalidad</label>
         <div class="row">

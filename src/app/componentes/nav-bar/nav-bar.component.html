@@ -18,7 +18,7 @@
             <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-info my-2 mr-sm-2"
                 routerLink="/pelicula/alta">Peliculas</button>
             <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-primary my-2 mr-sm-2"
-                routerLink="/paises">Paises</button>
+                routerLink="/actor/paisPelicula">Paises</button>
             <button *ngIf="(authService.auth.user | async)" class="btn btn-outline-danger my-2 my-sm-0"
                 (click)="cerrarSesion()">Salir</button>
         </form>

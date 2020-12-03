@@ -16,7 +16,18 @@
                 <app-detalle-actor [actorInput]="actorSeleccionado" [bajaInput]="false"></app-detalle-actor>
             </div>
             <div class="col-md-4">
-                <app-abm-actor [abmInput]="'m'" [actorInput]="actorSeleccionado"></app-abm-actor>
+                <!-- <app-abm-actor [abmInput]="'m'" [actorInput]="actorSeleccionado"></app-abm-actor> -->
+                <div class="row">
+                    <div class="col-12">
+                        <app-abm-actor [nacionalidadInput]="paisSeleccionado" [abmInput]="'m'" [actorInput]="actorSeleccionado"
+                        (limpiarNacionalidadInputOutput)="recibirLimpiarNacionalidad($event)"></app-abm-actor>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <app-tabla-pais (paisOutput)="recibirPais($event)" [listaPaisInput]="listaPaises"></app-tabla-pais>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ export class AbmActorComponent implements OnInit {
   @Input() actorInput: Actor = new Actor('','','',new Date(),true);
   @Input() abmInput: string; //a: alta - b: baja - m: modificacion - v: visualizacion
   @Output() actorOutput: EventEmitter<Actor> = new EventEmitter<Actor>();
+  @Output() limpiarNacionalidadInputOutput: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   actor: Actor;
   //--------
@@ -94,8 +95,16 @@ export class AbmActorComponent implements OnInit {
 
   public modificarActor() {
     if(this.datosValidos()) {
-      console.log('Ingreso a modificar')
-      this.actor = new Actor(this.actorInput.nombre, this.actorInput.apellido, this.actorInput.sexo, this.actorInput.fechaDeNacimiento, true,this.actorInput.nacionalidad);
+      
+      let nac: Pais = this.actorInput.nacionalidad;
+      console.log('nacionalidadInput: ' + this.nacionalidadInput);
+      if(this.nacionalidadInput != (null && undefined)) {
+        console.log('nacionalidadInput en if: ' + this.nacionalidadInput);
+        nac = this.nacionalidadInput;
+        this.actorInput.nacionalidad = nac;
+      }
+
+      this.actor = new Actor(this.actorInput.nombre, this.actorInput.apellido, this.actorInput.sexo, this.actorInput.fechaDeNacimiento, true,nac);
       this.servActor.modificarActor(this.actorInput.id, this.actor);
       Swal.fire({
         title: 'Exito',
@@ -104,6 +113,7 @@ export class AbmActorComponent implements OnInit {
         timer: 1500,
         showConfirmButton: false
       });
+      this.limpiarNacionalidadInputOutput.emit(true);
     }    
     else {
       Swal.fire({
@@ -162,6 +172,12 @@ export class AbmActorComponent implements OnInit {
   public esVisualizacion() {
     return this.abmInput == 'v';
   }
+
+
+  public tieneNacionalidadInput() {
+    return this.nacionalidadInput != (null && undefined);
+  }
+
 
   public accion():string {
     let accion: string;
