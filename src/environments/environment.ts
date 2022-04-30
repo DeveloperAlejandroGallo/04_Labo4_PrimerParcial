@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlPaises: 'https://restcountries.eu/rest/v2/region/americas',
+  urlPaises: 'https://restcountries.com/v3.1/all',
   firebase: {
     apiKey: "AIzaSyAskg6gscscFwNwn2aMB1oA9nhITjFQ_bE",
     authDomain: "labo4-primer-parcial.firebaseapp.com",
